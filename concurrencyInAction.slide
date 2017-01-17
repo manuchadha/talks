@@ -17,6 +17,7 @@ https://godoc.org/golang.org/x/sync/errgroup
 * Concurrency fundamentals in Go
 - *Goroutines*:
   - Very lightweight processes
+  - Starting 10,000 goroutines on my MacBook Pro took 22ms
   - All scheduling handled internally by the Go runtime
   - Unless you are CPU bound you do not have to think about scheduling
 - *Channel-based communication*:
@@ -33,7 +34,6 @@ Concurrency is not Parallelism!!
 - *Parallelism*: Programming as the simultaneous execution of (possibly related) computations.
 
 So Parallelism is simply running things in parallel.Concurrency is a way to structure your program.
-no-go.go
 
 * Without Goroutines
 
@@ -48,13 +48,13 @@ A goroutine is a function that is capable of running concurrently with other fun
 
 * Making it work
 
-Do something in *main* method to stop it from dying before *func* *foo* and *bar* executes
+Let do something in *main* method to stop it from dying before *func* *foo* and *bar* executes
 
 .play concurrency/gopher1.go /START OMIT/,/END OMIT/
 
 * Synchronization
 
-As we saw *func* *main* didn't know what *func* *foo* and *bar* was doing.
+We saw *func* *main* didn't know what *func* *foo* and *bar* was doing.
 
 If it did, it would have not exited before letting *func* *foo* and *bar* finish it's work.
 
@@ -62,9 +62,11 @@ Talk about communication problems!
 
 - Statement: If they can communicate, they can synchronize.
 
-* Channels
+* Channels: First-class citizens
 
-Channels to the rescue! They are a way to provide communication between two goroutines.
+  You can pass them as function arguments, store in containers, pass via channels, etc.
+  Moreover, channels are not tied to goroutines. Several goroutines can send/recv from a single channel. 
+  They are a way to provide communication between two goroutines.
 
 .code concurrency/channels.go /INIT OMIT/,/ENDINIT OMIT/
 
