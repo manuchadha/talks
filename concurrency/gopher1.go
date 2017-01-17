@@ -2,23 +2,27 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 )
 
-func gopher(msg string) {
-	for i := 0; ; i++ {
-		fmt.Println(msg, i)
-		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
-	}
-}
-
 //START OMIT
 func main() {
-	go gopher("I am Gopher")
+	go foo()
+	go bar()
 	fmt.Println("Hello Gopher!")
-	time.Sleep(2 * time.Second)
+	time.Sleep(5 * time.Second)
 	fmt.Println("Bye Gopher!")
 }
 
 //END OMIT
+func foo() {
+	for i := 0; i < 45; i++ {
+		fmt.Println("Foo:", i)
+	}
+}
+
+func bar() {
+	for i := 0; i < 45; i++ {
+		fmt.Println("Bar:", i)
+	}
+}
