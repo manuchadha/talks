@@ -91,15 +91,13 @@ By default, sends and receives block until the other side is ready. This allows 
 The example code sums the numbers in a slice, distributing the work between two goroutines.
  Once both goroutines have completed their computation,it calculates the final result
 
-* Let's play some more!
-
-We sent a channel to *func* *gopher* for communication. How about getting back a channel from it?
-
-.code concurrency/gopher3.go /GOPHER OMIT/,/ENDGOPHER OMIT/
-
-* Let's play some more!
+* n-times to 1
 
 .play concurrency/gopher3.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* 1 to n-times
+
+.play concurrency/gopher33.go /MAIN OMIT/,/ENDMAIN OMIT/
 
 * Same function, Many instances == Services!!
 
