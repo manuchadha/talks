@@ -14,10 +14,15 @@ https://blog.golang.org/advanced-go-concurrency-patterns
 https://blog.cloudflare.com/recycling-memory-buffers-in-go/
 https://godoc.org/golang.org/x/sync/errgroup
 
-* Concurrency in Go
-- Concurrent execution(goroutines)
-- Synchronize and Message(channels)
-- Multi-Way concurrency control(select)
+* Concurrency fundamentals in Go
+** Goroutines
+  - Very lightweight processes
+  - All scheduling handled internally by the Go runtime
+  - Unless you are CPU bound you do not have to think about scheduling
+** Channel-based communication
+  - The right way for goroutines to talk to each other
+** Multi-Way concurrency control
+  - Select
 
 * Concurrency Vs Parallelism
 
