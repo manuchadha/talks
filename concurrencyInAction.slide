@@ -70,6 +70,8 @@ Channels to the rescue! They are a way to provide communication between two goro
 
 .code concurrency/channels.go /SEND OMIT/,/ENDSEND OMIT/
 
+.code concurrency/channels.go /WAIT OMIT/,/ENDWAIT OMIT/
+
 .code concurrency/channels.go /REC OMIT/,/ENDREC OMIT/
 
 * Channels and Goroutines
