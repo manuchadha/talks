@@ -33,7 +33,7 @@ Concurrency is not Parallelism!!
 
 - *Parallelism*: Programming as the simultaneous execution of (possibly related) computations.
 
-So Parallelism is simply running things in parallel.Concurrency is a way to structure your program.
+So Concurrency is about dealing with lots of things at once.Parallelism is about doing lot of things at once.
 
 * Without Goroutines
 
