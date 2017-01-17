@@ -92,10 +92,12 @@ The example code sums the numbers in a slice, distributing the work between two 
 Once both goroutines have completed their computation,it calculates the final result
 
 * n-times to 1
+  Many no of functions writing to same channel
 
 .play concurrency/gopher3.go /MAIN OMIT/,/ENDMAIN OMIT/
 
 * 1 to n-times
+ Many no of functions polling values from the same channel
 
 .play concurrency/gopher33.go /MAIN OMIT/,/ENDMAIN OMIT/
 
