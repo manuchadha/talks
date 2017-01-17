@@ -80,7 +80,7 @@ Talk about communication problems!
 
 Let see how channels works with routines.
 
-.code concurrency/gopher3.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+.code concurrency/gopher2.go /GOPHER OMIT/,/ENDGOPHER OMIT/
 
 .play concurrency/gopher2.go /MAIN OMIT/,/ENDMAIN OMIT/
 
@@ -103,7 +103,7 @@ The example code sums the numbers in a slice, distributing the work between two 
 
 .code concurrency/gopher4.go /GOPHER OMIT/,/ENDGOPHER OMIT/
 
-* Continues....
+* ...
 
 .play concurrency/gopher4.go /MAIN OMIT/,/ENDMAIN OMIT/
 
