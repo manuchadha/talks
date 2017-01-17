@@ -58,7 +58,8 @@ We saw *func* *main* didn't know what *func* *foo* and *bar* was doing.
 
 If it did, it would have not exited before letting *func* *foo* and *bar* finish it's work.
 
-Lets see some better way from letting program exiting.
+Lets see some better way from letting the program exiting after work.
+
 - Wait Groups
 - Semaphore
 
