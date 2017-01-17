@@ -119,7 +119,7 @@ Now the gopher instance who responds first will print
 
 Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
 
-.play concurrencyAug2016/buffered_channels.go /START OMIT/,/END OMIT/
+.play concurrencyInAction/buffered_channels.go /START OMIT/,/END OMIT/
 
 * Concurrency Toys!
 
@@ -134,141 +134,141 @@ Sends to a buffered channel block only when the buffer is full. Receives block w
 
 Get a unique id by simply reading from a channel.
 
-.play concurrencyAug2016/uuid.go /START OMIT/,/END OMIT/
+.play concurrencyInAction/uuid.go /START OMIT/,/END OMIT/
 
 * Rate limiter
 
 Requests every 200ms.
 
-.code concurrencyAug2016/rate_limiter.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/rate_limiter.go /START1 OMIT/,/END1 OMIT/
 
 * Rate limiter
 
 First 3 requests in an immediate burst. Last 3 every second.
 
-.play concurrencyAug2016/rate_limiter.go /START2 OMIT/,/END2 OMIT/
+.play concurrencyInAction/rate_limiter.go /START2 OMIT/,/END2 OMIT/
 
 * Memory Recycler 1
 
 Create a pool of buffers emulating incoming network requests
 
-.code concurrencyAug2016/memory_recycler.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/memory_recycler.go /START1 OMIT/,/END1 OMIT/
 
 * Memory Recycler 1
 
-.play concurrencyAug2016/memory_recycler.go /START2 OMIT/,/END2 OMIT/
+.play concurrencyInAction/memory_recycler.go /START2 OMIT/,/END2 OMIT/
 
 * Memory Recycler 2
 
 Using a buffered channel to get buffers from a pool.
 
-.code concurrencyAug2016/memory_recycler_channel.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/memory_recycler_channel.go /START1 OMIT/,/END1 OMIT/
 
 * Memory Recycler 2
 
-.code concurrencyAug2016/memory_recycler_channel.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/memory_recycler_channel.go /START2 OMIT/,/END2 OMIT/
 
 * Memory Recycler 2
 
-.play concurrencyAug2016/memory_recycler_channel.go /START3 OMIT/,/END3 OMIT/
+.play concurrencyInAction/memory_recycler_channel.go /START3 OMIT/,/END3 OMIT/
 
 * Memory Recycler 3
 
 Create a memory recycler function
 
-.code concurrencyAug2016/memory_recycler_func.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/memory_recycler_func.go /START1 OMIT/,/END1 OMIT/
 
 * Memory Recycler 3
 
-.code concurrencyAug2016/memory_recycler_func.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/memory_recycler_func.go /START2 OMIT/,/END2 OMIT/
 
 * Memory Recycler 3
 
-.code concurrencyAug2016/memory_recycler_func.go /START3 OMIT/,/END3 OMIT/
+.code concurrencyInAction/memory_recycler_func.go /START3 OMIT/,/END3 OMIT/
 
 * Memory Recycler 3
 
-.code concurrencyAug2016/memory_recycler_func.go /START4 OMIT/,/END4 OMIT/
+.code concurrencyInAction/memory_recycler_func.go /START4 OMIT/,/END4 OMIT/
 
 * Memory Recycler 3
 
-.code concurrencyAug2016/memory_recycler_func.go /START5 OMIT/,/END5 OMIT/
+.code concurrencyInAction/memory_recycler_func.go /START5 OMIT/,/END5 OMIT/
 
 * Memory Recycler 3
 
-.play concurrencyAug2016/memory_recycler_func.go /START6 OMIT/,/END6 OMIT/
+.play concurrencyInAction/memory_recycler_func.go /START6 OMIT/,/END6 OMIT/
 
 * A Simple Pipeline
 
 Stages of work sent downstream.
 
-.code concurrencyAug2016/pipelines.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/pipelines.go /START1 OMIT/,/END1 OMIT/
 
 * A Simple Pipeline
 
-.code concurrencyAug2016/pipelines.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/pipelines.go /START2 OMIT/,/END2 OMIT/
 
 * A Simple Pipeline
 
-.play concurrencyAug2016/pipelines.go /START3 OMIT/,/END3 OMIT/
+.play concurrencyInAction/pipelines.go /START3 OMIT/,/END3 OMIT/
 
 * A Distributed Pipeline
 
 Each stage on a separate goroutine and merge the outputs.
 
-.code concurrencyAug2016/pipelines_merge.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/pipelines_merge.go /START1 OMIT/,/END1 OMIT/
 
 * A Distributed Pipeline
 
-.code concurrencyAug2016/pipelines_merge.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/pipelines_merge.go /START2 OMIT/,/END2 OMIT/
 
 * A Distributed Pipeline
 
-.play concurrencyAug2016/pipelines_merge.go /START3 OMIT/,/END3 OMIT/
+.play concurrencyInAction/pipelines_merge.go /START3 OMIT/,/END3 OMIT/
 
 * A MD5 checksum pipeline
 
 A single staged serial pipeline
 
-.play concurrencyAug2016/md5_serial.go /START1 OMIT/,/END1 OMIT/
+.play concurrencyInAction/md5_serial.go /START1 OMIT/,/END1 OMIT/
 
 * A single staged serial pipeline
 
-.play concurrencyAug2016/md5_bounded.go /START2 OMIT/,/END2 OMIT/
+.play concurrencyInAction/md5_bounded.go /START2 OMIT/,/END2 OMIT/
 
 * Three staged parallel pipeline
 
 Walk, digest and send result
 
-.code concurrencyAug2016/md5_bounded.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/md5_bounded.go /START1 OMIT/,/END1 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/md5_bounded.go /START2 OMIT/,/END2 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START3 OMIT/,/END3 OMIT/
+.code concurrencyInAction/md5_bounded.go /START3 OMIT/,/END3 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START4 OMIT/,/END4 OMIT/
+.code concurrencyInAction/md5_bounded.go /START4 OMIT/,/END4 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START5 OMIT/,/END5 OMIT/
+.code concurrencyInAction/md5_bounded.go /START5 OMIT/,/END5 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START6 OMIT/,/END6 OMIT/
+.code concurrencyInAction/md5_bounded.go /START6 OMIT/,/END6 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_bounded.go /START7 OMIT/,/END7 OMIT/
+.code concurrencyInAction/md5_bounded.go /START7 OMIT/,/END7 OMIT/
 
 * ...
 
-.play concurrencyAug2016/md5_bounded.go /START8 OMIT/,/END8 OMIT/
+.play concurrencyInAction/md5_bounded.go /START8 OMIT/,/END8 OMIT/
 
 * Context and Errgroup
 
@@ -286,16 +286,16 @@ type Group
 
 * ...
 
-.code concurrencyAug2016/md5_errgroup.go /START1 OMIT/,/END1 OMIT/
+.code concurrencyInAction/md5_errgroup.go /START1 OMIT/,/END1 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_errgroup.go /START2 OMIT/,/END2 OMIT/
+.code concurrencyInAction/md5_errgroup.go /START2 OMIT/,/END2 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_errgroup.go /START3 OMIT/,/END3 OMIT/
+.code concurrencyInAction/md5_errgroup.go /START3 OMIT/,/END3 OMIT/
 
 * ...
 
-.code concurrencyAug2016/md5_errgroup.go /START4 OMIT/,/END4 OMIT/
+.code concurrencyInAction/md5_errgroup.go /START4 OMIT/,/END4 OMIT/
