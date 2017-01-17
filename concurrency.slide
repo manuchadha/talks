@@ -1,0 +1,132 @@
+Concurrency
+Go Meetup #1 Bangalore 
+22 Jun 2013
+
+Adnaan Badr
+badr.adnaan@gmail.com
+https://github.com/adnaan/talks
+Reference:http://talks.golang.org/2012/concurrency.slide
+Share Memory by Communicating: https://coderwall.com/p/rklk_a
+
+* Goroutines
+
+Concurrently executing function launched by the *go* statement.
+
+.play concurrency/gopher.go
+
+* Making it work
+
+Do something in *main* goroutine to stop it from dying before *func* *gopher* executes
+
+.play concurrency/gopher1.go /START OMIT/,/END OMIT/
+
+* Synchronization
+
+As we saw *func* *main* didn't know what *func* *gopher* was doing. 
+
+If it did, it would have not exited before letting *func* *gopher* finish it's work.
+
+Talk about communication problems!
+
+- Statement: If they can communicate, they can synchronize.
+
+* Channels
+
+Channels to the rescue! They are a way to provide communication between two goroutines.
+
+.code concurrency/channels.go /INIT OMIT/,/ENDINIT OMIT/
+
+.code concurrency/channels.go /SEND OMIT/,/ENDSEND OMIT/
+
+.code concurrency/channels.go /REC OMIT/,/ENDREC OMIT/
+
+* Channels and Goroutines
+
+Add a channel to the mix!
+
+.code concurrency/gopher2.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+
+.play concurrency/gopher2.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* Takeaways
+
+A channel blocks until both sender(c<-) and receiver(<-c) are ready to do their jobs.
+
+"Block" means no communication takes place through the channel. In *func* *main* the execution of next program instruction is dependant on the receiving of a channel message: fmt.Printf("Gopher says: %q\n", <-c) , only executes if a message is received(or it wait's indefinitely).
+
+Hence, the sending and receving of messages also synchronizes *func* *main* and *func* *gopher*
+
+* Let's play some more!
+
+We sent a channel to *func* *gopher* for communication. How about getting back a channel from it?
+
+.code concurrency/gopher3.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+
+* Let's play some more!
+
+.play concurrency/gopher3.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* Same function, Many instances == Services!!
+
+.code concurrency/gopher4.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+
+.play concurrency/gopher4.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* Whoever talks first!
+
+The *gopher* instances are executing one after the other. Let's print whoever responds first. We need a mulitplexer.
+
+.code concurrency/gopher5.go /FIRST OMIT/,/ENDFIRST OMIT/
+
+* Whoever talks first!
+
+Now the gopher instance who responds first will print
+
+.code concurrency/gopher5.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+
+.play concurrency/gopher5.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* Restore order
+
+The messages are not in sequence. Let's bring back the order! Instead of a string we pass a struct message.
+
+.code concurrency/gopher6.go /MSG OMIT/,/ENDMSG OMIT/
+
+*Message* contains the string message and a wait channel which is a signal for
+*gopher* to reply or not.
+
+.code concurrency/gopher6.go /FIRST OMIT/,/ENDFIRST OMIT/
+
+* Restore order
+
+We send *true* on wait channel of the message to indicate that the relevant gopher should reply.
+
+.play concurrency/gopher6.go /MAIN OMIT/,/ENDMAIN OMIT/
+
+* More in the future!
+
+- Buffered channels
+
+- Close
+
+- Select
+
+* Conclusion
+
+- Concurrency in Go is simple.
+
+- Share memory by communicating.
+
+- Do not communicate by sharing memory.
+
+
+
+
+
+
+
+
+
+
+
+
