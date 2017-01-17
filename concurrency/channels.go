@@ -5,8 +5,8 @@ import "fmt"
 func main() {
 
 	//INIT OMIT
-	// Declaring and initializing.
-	// a channel which allows "int" type of message
+	// a channel which allows "int" type of message.
+ 	// Makes an unbuffered channel.
 	var c chan int
 	c = make(chan int)
 	// or
@@ -14,14 +14,23 @@ func main() {
 	//ENDINIT OMIT
 
 	//SEND OMIT
-	// Sending on a channel.
+	// Sends a value on the channel
 	c <- 1
 	//ENDSEND OMIT
 
+	//WAIT OMIT
+	// Waits to receive a value on the channel
+	<- c
+	//ENDWAIT OMIT
+
+	
 	//REC OMIT
-	// Receiving from a channel.
+	//Waits to receive a value and stores it in x
 	// The "arrow" indicates the direction of data flow.
-	val = <-c
+	x = <- c
+	//or 
+	//Waits to receive a value; ok will be false if channel is closed and empty
+	x, ok = <- c
 	//ENDREC OMIT
 
 }
