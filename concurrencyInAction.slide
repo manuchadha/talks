@@ -33,10 +33,16 @@ Concurrency is not Parallelism!!
 - *Parallelism*: Programming as the simultaneous execution of (possibly related) computations.
 
 So Parallelism is simply running things in parallel.Concurrency is a way to structure your program.
+no-go.go
+
+* Without Goroutines
+
+.play concurrencyInAction/no-go.go
+
 
 * Goroutines
 
-Goroutines are independently executing functions in the same address space.
+A goroutine is a function that is capable of running concurrently with other functions. To create a goroutine we use the keyword go followed by a function invocation:
 
 .play concurrency/gopher.go
 
