@@ -2,33 +2,29 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
-
-//GOPHER OMIT
-func gopher(msg string) <-chan string { // returns a receive only channel
-	c := make(chan string)
-	go func() { //invoke goroutine using a function literal.
-		// In Go function literals are closures.
-		for i := 0; ; i++ {
-			c <- fmt.Sprintf("%s %d", msg, i)
-			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
-		}
-	}() //call the function!
-	return c
-}
-
-//ENDGOPHER OMIT
-
 //MAIN OMIT
 func main() {
 
-	c := gopher("I am cool!") //receive the channel
-	for i := 0; i < 5; i++ {
-		fmt.Printf("Gopher says: %q\n", <-c)
+	n := 10
+	c := make(chan int)
+	done := make(chan bool)
+	for i := 0; i < n; i++ {
+		go func() {
+			for i := 0; i < 10; i++ {
+				c <- i
+			}
+			done <- true
+		}()
 	}
-	fmt.Println("Main: You talk too much. Bye!")
+	go func() {
+		for i := 0; i < n; i++ {
+			<-done
+		}
+		close(c)
+	}()
+	for n := range c {
+		fmt.Println(n)
+	}
 }
-
 //ENDMAIN OMIT
