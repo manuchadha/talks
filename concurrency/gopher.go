@@ -1,18 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-	"time"
-)
+import "fmt"
 
-func gopher(msg string) {
-	for i := 0; ; i++ {
-		fmt.Println(msg, i)
-		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+func main() {
+	go foo()
+	go bar()
+}
+
+func foo() {
+	for i := 0; i < 45; i++ {
+		fmt.Println("Foo:", i)
 	}
 }
 
-func main() {
-	go gopher("I am Gopher")
+func bar() {
+	for i := 0; i < 45; i++ {
+		fmt.Println("Bar:", i)
+	}
 }
