@@ -58,9 +58,9 @@ We saw *func* *main* didn't know what *func* *foo* and *bar* was doing.
 
 If it did, it would have not exited before letting *func* *foo* and *bar* finish it's work.
 
-Talk about communication problems!
-
-- Statement: If they can communicate, they can synchronize.
+Lets see some better way from letting program exiting.
+- Wait Groups
+- Semaphore
 
 * Channels: First-class citizens
 
