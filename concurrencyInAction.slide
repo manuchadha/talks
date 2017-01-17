@@ -22,8 +22,6 @@ https://blog.golang.org/advanced-go-concurrency-patterns
   - Unless you are CPU bound you do not have to think about scheduling
 - *Channel-based communication*:
   - The right way for goroutines to talk to each other
-- *Multi-Way concurrency control*:
-  - Select
 
 * Concurrency Vs Parallelism
 
