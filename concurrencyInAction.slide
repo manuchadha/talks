@@ -3,7 +3,8 @@ Concurrency In Action
 
 Manu Chadha
 manu.chadha87@gmail.com
-https://github.com/manuchadha/
+
+https://github.com/manuchadha/talks
 
 References:
 
@@ -146,6 +147,7 @@ Sends to a buffered channel block only when the buffer is full. Receives block w
 - UUID Service
 - Rate limiter
 - Simple Pipeline
+- Distributed Pipeline
 - Fan IN /Fan Out
 
 * UUID Service
@@ -195,9 +197,11 @@ Each stage on a separate goroutine and merge the outputs.
 .play concurrencyInAction/pipelines_merge.go /START3 OMIT/,/END3 OMIT/
 
 * Fan OUT Pattern
- Multiple functions reading from the same channel until that channel is closed 
+ 
+- Multiple functions reading from the same channel until that channel is closed 
 
 * Fan In Pattern
- A function can read from multiple inputs and proceed until all are closed by
+
+- A function can read from multiple inputs and proceed until all are closed by
  multiplexing the input channels onto a single channel that's closed when
  all the inputs are closed.
