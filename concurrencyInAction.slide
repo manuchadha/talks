@@ -142,10 +142,8 @@ Sends to a buffered channel block only when the buffer is full. Receives block w
 
 - UUID Service
 - Rate limiter
-- Load Balancer
-- Memory Recycler
 - Simple Pipeline
-- A MD5 checksum Pipeline
+- Fan IN /Fan Out
 
 * UUID Service
 
@@ -164,56 +162,6 @@ Requests every 200ms.
 First 3 requests in an immediate burst. Last 3 every second.
 
 .play concurrencyInAction/rate_limiter.go /START2 OMIT/,/END2 OMIT/
-
-* Memory Recycler 1
-
-Create a pool of buffers emulating incoming network requests
-
-.code concurrencyInAction/memory_recycler.go /START1 OMIT/,/END1 OMIT/
-
-* Memory Recycler 1
-
-.play concurrencyInAction/memory_recycler.go /START2 OMIT/,/END2 OMIT/
-
-* Memory Recycler 2
-
-Using a buffered channel to get buffers from a pool.
-
-.code concurrencyInAction/memory_recycler_channel.go /START1 OMIT/,/END1 OMIT/
-
-* Memory Recycler 2
-
-.code concurrencyInAction/memory_recycler_channel.go /START2 OMIT/,/END2 OMIT/
-
-* Memory Recycler 2
-
-.play concurrencyInAction/memory_recycler_channel.go /START3 OMIT/,/END3 OMIT/
-
-* Memory Recycler 3
-
-Create a memory recycler function
-
-.code concurrencyInAction/memory_recycler_func.go /START1 OMIT/,/END1 OMIT/
-
-* Memory Recycler 3
-
-.code concurrencyInAction/memory_recycler_func.go /START2 OMIT/,/END2 OMIT/
-
-* Memory Recycler 3
-
-.code concurrencyInAction/memory_recycler_func.go /START3 OMIT/,/END3 OMIT/
-
-* Memory Recycler 3
-
-.code concurrencyInAction/memory_recycler_func.go /START4 OMIT/,/END4 OMIT/
-
-* Memory Recycler 3
-
-.code concurrencyInAction/memory_recycler_func.go /START5 OMIT/,/END5 OMIT/
-
-* Memory Recycler 3
-
-.play concurrencyInAction/memory_recycler_func.go /START6 OMIT/,/END6 OMIT/
 
 * A Simple Pipeline
 
@@ -243,76 +191,10 @@ Each stage on a separate goroutine and merge the outputs.
 
 .play concurrencyInAction/pipelines_merge.go /START3 OMIT/,/END3 OMIT/
 
-* A MD5 checksum pipeline
+* Fan OUT Pattern
+ Multiple functions reading from the same channel until that channel is closed 
 
-A single staged serial pipeline
-
-.play concurrencyInAction/md5_serial.go /START1 OMIT/,/END1 OMIT/
-
-* A single staged serial pipeline
-
-.play concurrencyInAction/md5_bounded.go /START2 OMIT/,/END2 OMIT/
-
-* Three staged parallel pipeline
-
-Walk, digest and send result
-
-.code concurrencyInAction/md5_bounded.go /START1 OMIT/,/END1 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START2 OMIT/,/END2 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START3 OMIT/,/END3 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START4 OMIT/,/END4 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START5 OMIT/,/END5 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START6 OMIT/,/END6 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_bounded.go /START7 OMIT/,/END7 OMIT/
-
-* ...
-
-.play concurrencyInAction/md5_bounded.go /START8 OMIT/,/END8 OMIT/
-
-* Context and Errgroup
-
-Package errgroup provides synchronization, error propagation, and Context cancelation for groups of goroutines working on subtasks of a common task.
-
-Package context defines the Context type, which carries deadlines, cancelation signals, and other request-scoped values across API boundaries and between processes.
-
-type Group
-
-- func WithContext(ctx context.Context) (*Group, context.Context)
-
-- func (g *Group) Go(f func() error)
-
-- func (g *Group) Wait() error
-
-* ...
-
-.code concurrencyInAction/md5_errgroup.go /START1 OMIT/,/END1 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_errgroup.go /START2 OMIT/,/END2 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_errgroup.go /START3 OMIT/,/END3 OMIT/
-
-* ...
-
-.code concurrencyInAction/md5_errgroup.go /START4 OMIT/,/END4 OMIT/
+* Fan In Pattern
+ A function can read from multiple inputs and proceed until all are closed by
+ multiplexing the input channels onto a single channel that's closed when
+ all the inputs are closed.
