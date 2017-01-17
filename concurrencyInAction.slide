@@ -99,9 +99,11 @@ The example code sums the numbers in a slice, distributing the work between two 
 
 .play concurrency/gopher33.go /MAIN OMIT/,/ENDMAIN OMIT/
 
-* Same function, Many instances == Services!!
+* Pass a channel to function and return a channel from a function
 
 .code concurrency/gopher4.go /GOPHER OMIT/,/ENDGOPHER OMIT/
+
+* Continues....
 
 .play concurrency/gopher4.go /MAIN OMIT/,/ENDMAIN OMIT/
 
