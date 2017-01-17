@@ -106,7 +106,9 @@ Once both goroutines have completed their computation,it calculates the final re
 
 .play concurrency/gopher33.go /MAIN OMIT/,/ENDMAIN OMIT/
 
-* Pass a channel to function and return a channel from a function
+* Some more code
+
+  Pass a channel to function and return a channel from a function
 
 .code concurrency/gopher4.go /GOPHER OMIT/,/ENDGOPHER OMIT/
 
