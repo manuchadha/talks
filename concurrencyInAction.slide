@@ -35,6 +35,8 @@ Concurrency is not Parallelism!!
 
 So Concurrency is about dealing with lots of things at once.Parallelism is about doing lot of things at once.
 
+Do refer -https://www.youtube.com/watch?v=cN_DpYBzKso&t=784s
+
 * Without Goroutines
 
 .play concurrencyInAction/no-go.go
